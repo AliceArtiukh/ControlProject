@@ -31,3 +31,4 @@ class Figure:
             dx, dy = block[0], block[1]
             new_shape.append([-dy, dx])
         self.shape = new_shape
+
