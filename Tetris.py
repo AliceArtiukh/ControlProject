@@ -24,7 +24,7 @@ class TetrisGame:
         self.pen.speed(0)
         self.pen.color("white")
 
-        self.board=[[0]*self.board_width for i in range(self.board_height)]
+        self.board=[[0]*self.board_width for _ in range(self.board_height)]
 
         self.current_figure=None
         self.game_running=True
