@@ -73,6 +73,34 @@ class TetrisGame:
             if board_y>=0 and self.board[board_y][board_x]!=0:
                 return False
         return True
+    def merge_figure_to_board(self):
+      for dx, dy in self.current_figure.shape:
+        board_x = self.current_figure.x + dx
+        board_y = self.current_figure.y + dy
+        if 0<= board_y < self.board_height and 0<= board_x < self.board_width:
+            self.board[board_y][board_x]=self.current_figure.color
+
+    def clear_lines(self):
+      new_board=[row for row in self.board if 0 in row]
+      lines_cleared = self.board_height - len(new_board)
+
+      if lines_cleared > 0:
+          self.score += lines_cleared * 100
+
+          self.board=[[0] * self.board_width for _ in range(lines_cleared)] + new_board
+
+    def draw_square(self, x, y, color):
+      screen_x = (x - self.board_width / 2) * self.cell_size
+      screen_y = (self.board_height / 2 - y) * self.cell_size
+
+      self.pen.goto(screen_x, screen_y)
+      self.pen.fillcolor(color)
+      self.pen.pencolor("#222222")
+      self.pen.begin_fill()
+      for _ in range(4):
+        self.pen.forward(self.cell_size - 1)
+        self.pen.right(90)
+      self.pen.end_fill()
 
 
 
