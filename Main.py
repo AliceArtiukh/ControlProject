@@ -1,5 +1,5 @@
 import time
-from tetris_game import TetrisGame
+from Tetris import TetrisGame
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
   while True:
    current_time = time.time()
 
-   if current_time - last_update_time > 0.4:
+   if current_time - last_update_time >= 0.4:
       game.update_logic()
       last_update_time = current_time
 
@@ -18,6 +18,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-
+   main()
 
